@@ -19,7 +19,14 @@ _JINJA_RE = re.compile(r"(\{(?:%|-|#|\{).*?(?:%|-|#|\})\})", re.DOTALL)
  
 # Placeholder format — unlikely to appear in real CSS.
 _PLACEHOLDER = "__JINJA_{index}__"
- 
+
+# Yaml formatter
+def str_presenter(dumper, data):
+    """configures yaml for dumping multiline strings
+    Ref: https://stackoverflow.com/questions/8640959/how-can-i-control-what-scalar-form-pyyaml-uses-for-my-data"""
+    if len(data.splitlines()) > 1:  # check for multiline string
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
+    return dumper.represent_scalar('tag:yaml.org,2002:str', data)
  
 def extract_jinja(css: str) -> tuple[str, list[str]]:
     """
@@ -140,7 +147,7 @@ def process_node(node):
                 if isinstance(value, str):
                     sub = yaml.safe_load(value)
                     sub = process_subdicts(sub)
-                    node[key] = yaml.dump(sub, Dumper=MyDumper, sort_keys=False, default_flow_style=False)
+                    node[key] = yaml.dump(sub)
             else:
                 process_node(value)
     elif isinstance(node, list):
@@ -162,13 +169,16 @@ def process_subdicts(sub):
 def main():
     input_file = 'lcars.yaml' # Replace with your theme file name
     output_file = 'themes/lcars_min.yaml'
-
+    
+    yaml.add_representer(str, str_presenter)
+    yaml.representer.SafeRepresenter.add_representer(str, str_presenter)
+    
     with open(input_file, 'r') as f:
         data = yaml.safe_load(f)
 
     process_node(data)
 
     with open(output_file, 'w') as f:
-        yaml.dump(data, f, Dumper=MyDumper, sort_keys=False)
+        yaml.dump(data, f)
 if __name__ == "__main__":
     main()
