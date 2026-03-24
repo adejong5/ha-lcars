@@ -36,7 +36,8 @@ def process_node(node):
                     if isinstance(selectors, dict):
                         for select, css in selectors.items():
                             print(f"Processing CSS in: {key}, {select}")
-                            node[key][select] = flatten_with_lightning(css)
+                            selectors[select] = flatten_with_lightning(css)
+                    key[value] = yaml.safe_dump(selectors, sort_keys=False, default_flow_style=False)
             else:
                 process_node(value)
     elif isinstance(node, list):
