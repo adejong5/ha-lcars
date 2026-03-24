@@ -186,7 +186,9 @@ def main():
     with open(input_file, 'r') as f:
         data = yaml.load(f)
 
-    process_node(data)
+    # Find the card-mod CSS key directly — it's the only place CSS lives.
+    card_mod_css_key = next(k for k in data if 'card-mod CSS' in k)
+    process_node(data[card_mod_css_key])
 
     with open(output_file, 'wb') as f:
         yaml.dump(data, f)
