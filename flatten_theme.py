@@ -1,10 +1,8 @@
 import ruamel.yaml
 import re
 import subprocess
-import os
 import tempfile
 from pathlib import Path
-import math
 from ruamel.yaml.constructor import RoundTripConstructor
 
 # Set of keys known to contain CSS in card-mod themes
@@ -15,7 +13,49 @@ CSS_KEYS = {
     "card-mod-config", "card-mod-panel-custom", "card-mod-top-app-bar-fixed",
     "card-mod-dialog"
 }
+
+# Matches all three Jinja tag styles:  {% ... %}  {{ ... }}  {# ... #}
+# Uses a non-greedy match and DOTALL so multi-line tags are handled too.
+_JINJA_RE = re.compile(r"(\{(?:%|-|#|\{).*?(?:%|-|#|\})\})", re.DOTALL)
+
+# Matches entire {% if %} ... {% endif %} blocks, including all content inside.
 _BLOCK_RE = re.compile(r"(\{%-?\s*if\b.*?-?%\}.*?\{%-?\s*endif\s*-?%\})", re.DOTALL)
+
+# Placeholder format — unlikely to appear in real CSS.
+_PLACEHOLDER = "__JINJA_{index}__"
+
+
+def extract_jinja(css: str) -> tuple[str, list[str]]:
+    """
+    Replace every Jinja tag in *css* with a numbered placeholder.
+
+    Returns:
+        stripped   – CSS string safe to pass to a minifier
+        tokens     – ordered list of the original Jinja tag strings
+    """
+    tokens: list[str] = []
+
+    def replacer(match: re.Match) -> str:
+        tokens.append(match.group(0))
+        return _PLACEHOLDER.format(index=len(tokens) - 1)
+
+    stripped = _JINJA_RE.sub(replacer, css)
+    return stripped, tokens
+
+
+def restore_jinja(css: str, tokens: list[str]) -> str:
+    """
+    Substitute placeholders back with their original Jinja tags.
+    Strips leading whitespace the minifier may have added before a placeholder,
+    but leaves trailing characters (e.g. 'px') untouched.
+    """
+    for index, token in enumerate(tokens):
+        placeholder = _PLACEHOLDER.format(index=index)
+        # \s* on the left only — don't consume characters after the placeholder
+        # (e.g. 'px' in '--lcars-border: __JINJA_0__px')
+        css = re.sub(rf"\s*{re.escape(placeholder)}", token, css)
+    return css
+
 
 def minify_with_jinja(css: str) -> str:
     """
@@ -44,7 +84,7 @@ def minify_with_jinja(css: str) -> str:
     stripped = _BLOCK_RE.sub(lift_block, css)
 
     # Step 2: replace remaining {{ }} inline value tags with CSS-safe idents.
-    _, inline_tokens = extract_jinja(stripped)  # only {{ }} remain now
+    stripped, inline_tokens = extract_jinja(stripped)
     ident_map: dict[str, str] = {}
 
     for i, token in enumerate(inline_tokens):
@@ -66,7 +106,8 @@ def minify_with_jinja(css: str) -> str:
         minified = minified.replace(_PLACEHOLDER.format(index=i), block)
 
     return minified
-        
+
+
 def flatten_with_lightning(css_text):
     with tempfile.NamedTemporaryFile(suffix=".css", mode="w", delete=False) as tmp:
         tmp.write(css_text)
@@ -81,6 +122,7 @@ def flatten_with_lightning(css_text):
         return result.stdout.strip() if result.returncode == 0 else result.stderr
     finally:
         Path(tmp_path).unlink(missing_ok=True)
+
 
 def make_literal(s: str) -> ruamel.yaml.scalarstring.LiteralScalarString:
     """Wrap a string as a ruamel literal block scalar (the | style)."""
@@ -129,23 +171,25 @@ def process_node(node):
     elif isinstance(node, list):
         for item in node:
             process_node(item)
-    
+
+
 def main():
-    input_file = 'lcars.yaml' # Replace with your theme file name
+    input_file = 'lcars.yaml'
     output_file = 'themes/lcars_min.yaml'
 
-    
     RoundTripConstructor.flatten_mapping = lambda self, node: None
-    
+
     yaml = ruamel.yaml.YAML()
     yaml.preserve_quotes = True
     yaml.default_flow_style = False
     with open(input_file, 'r') as f:
         data = yaml.load(f)
-        
+
     process_node(data)
 
     with open(output_file, 'wb') as f:
         yaml.dump(data, f)
+
+
 if __name__ == "__main__":
     main()
