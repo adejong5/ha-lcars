@@ -46,6 +46,7 @@ def process_subdicts(sub):
             sub[key] = process_subdicts(subsub)
         else:
             print(f"Processing CSS in: {key}")
+            print(f"  input is: {subsub}"}
             sub[key] = flatten_with_lightning(subsub)
     return sub
     
