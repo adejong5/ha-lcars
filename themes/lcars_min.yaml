@@ -280,8 +280,7 @@
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -317,14 +316,13 @@
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -961,8 +959,7 @@ LCARS Default:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -998,14 +995,13 @@ LCARS Default:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -1660,8 +1656,7 @@ LCARS Classic:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -1697,14 +1692,13 @@ LCARS Classic:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -2360,8 +2354,7 @@ LCARS Nemesis Blue:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -2397,14 +2390,13 @@ LCARS Nemesis Blue:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -3060,8 +3052,7 @@ LCARS Lower Decks I:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -3097,14 +3088,13 @@ LCARS Lower Decks I:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -3760,8 +3750,7 @@ LCARS Lower Decks II:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -3797,14 +3786,13 @@ LCARS Lower Decks II:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -4460,8 +4448,7 @@ LCARS Romulus:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -4497,14 +4484,13 @@ LCARS Romulus:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -5160,8 +5146,7 @@ LCARS Kronos:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -5197,14 +5182,13 @@ LCARS Kronos:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -5860,8 +5844,7 @@ LCARS Cardassia:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -5897,14 +5880,13 @@ LCARS Cardassia:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -6560,8 +6542,7 @@ LCARS Zeldaar:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -6597,14 +6578,13 @@ LCARS Zeldaar:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -7260,8 +7240,7 @@ LCARS Modern:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -7297,14 +7276,13 @@ LCARS Modern:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -7960,8 +7938,7 @@ LCARS Picard I:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -7997,14 +7974,13 @@ LCARS Picard I:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -8660,8 +8636,7 @@ LCARS Picard II:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -8697,14 +8672,13 @@ LCARS Picard II:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -9360,8 +9334,7 @@ LCARS Red Alert:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -9397,14 +9370,13 @@ LCARS Red Alert:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -10060,8 +10032,7 @@ LCARS TNG:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -10097,14 +10068,13 @@ LCARS TNG:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -10759,8 +10729,7 @@ LCARS TNGbuttons:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -10796,14 +10765,13 @@ LCARS TNGbuttons:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -11458,8 +11426,7 @@ LCARS Transporter:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -11495,14 +11462,13 @@ LCARS Transporter:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -12158,8 +12124,7 @@ LCARS Navigation:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -12195,14 +12160,13 @@ LCARS Navigation:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -12858,8 +12822,7 @@ LCARS 25C:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -12895,14 +12858,13 @@ LCARS 25C:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -13564,8 +13526,7 @@ LCARS 25C (Red Alert):
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -13601,14 +13562,13 @@ LCARS 25C (Red Alert):
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -14268,8 +14228,7 @@ LCARS 25C (Yellow Alert):
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -14305,14 +14264,13 @@ LCARS 25C (Yellow Alert):
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -14972,8 +14930,7 @@ LCARS 25C (Blue Alert):
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -15009,14 +14966,13 @@ LCARS 25C (Blue Alert):
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
@@ -15676,8 +15632,7 @@ LCARS Breen:
       \ > .card-actions .position-badge {\n  color: var(--lcars-text-dark);\n}\n\n/* -----------------------------------------------\
       \ */\n/*                Common Card Styles               */\n/* -----------------------------------------------\
       \ */\n:host > ha-card {\n  font-family: var(--font-family) !important;\n  --md-sys-color-primary:\
-      \ var(--lcars-ui-quaternary) !important;\n}\n#:host > ha-card > .name {\n#  --primary-text-color:\
-      \ var(--lcars-text-dark);\n#}\n\n/* ===============================================\
+      \ var(--lcars-ui-quaternary) !important;\n}\n\n/* ===============================================\
       \ */\n/*        HEADER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Header Styles ------------ */\n:host(.header-left),\n\
       :host(.header-right),\n:host(.header-contained),\n:host(.header-open),\nha-card:is(.header-left,\n\
@@ -15713,14 +15668,13 @@ LCARS Breen:
       \ 0px;\n    background-color: var(--lcars-background-color);\n    --primary-text-color:\
       \ var(--lcars-text-gray);\n    height: 100%;\n    box-sizing: border-box;\n    \n\
       \    > .name {\n    --primary-text-color: var(--lcars-text-gray);\n    }\n  }\n\
-      }\n> ha-markdown,\n> ha-card > ha-markdown {\n  padding-block: 0px;\n}\n\n/* -----------------Border\
-      \ on left---------------- */\n:host(.middle-left),\n:host(.middle-contained),\n\
-      ha-card:is(.middle-left,\n           .middle-contained\n):not(div > *) {\n  border-left-width:\
-      \ var(--lcars-vertical-border);\n  > :not(style,card-mod) {\n    padding-left: 6px;\n\
-      \  }\n}\n\n/* ----------------Border on right---------------- */\n:host(.middle-right),\n\
-      :host(.middle-contained),\nha-card:is(.middle-right,\n           .middle-contained\n\
-      ):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
-      \ {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
+      }\n\n/* -----------------Border on left---------------- */\n:host(.middle-left),\n\
+      :host(.middle-contained),\nha-card:is(.middle-left,\n           .middle-contained\n\
+      ):not(div > *) {\n  border-left-width: var(--lcars-vertical-border);\n  > :not(style,card-mod)\
+      \ {\n    padding-left: 6px;\n  }\n}\n\n/* ----------------Border on right----------------\
+      \ */\n:host(.middle-right),\n:host(.middle-contained),\nha-card:is(.middle-right,\n\
+      \           .middle-contained\n):not(div > *) {\n  border-right-width: var(--lcars-vertical-border);\n\
+      \  > :not(style,card-mod) {\n    padding-right: 6px;\n  }\n}\n\n/* ===============================================\
       \ */\n/*        FOOTER CLASSES AND CARD TYPE FIXES       */\n/* ===============================================\
       \ */\n\n/* ------------- Common Footer Styles ------------ */\n:host(.footer-left),\n\
       :host(.footer-right),\n:host(.footer-contained),\n:host(.footer-open),\nha-card:is(.footer-left,\n\
