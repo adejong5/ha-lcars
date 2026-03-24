@@ -2,6 +2,7 @@ import yaml
 import subprocess
 import os
 import tempfile
+from pathlib import Path
 
 # Set of keys known to contain CSS in card-mod themes
 CSS_KEYS = {
