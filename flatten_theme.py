@@ -13,17 +13,14 @@ CSS_KEYS = {
     "card-mod-config", "card-mod-panel-custom", "card-mod-top-app-bar-fixed",
     "card-mod-dialog"
 }
-# ---------------------------------------------------------------------------
-# Jinja template preservation
-# ---------------------------------------------------------------------------
- 
 # Matches all three Jinja tag styles:  {% ... %}  {{ ... }}  {# ... #}
 # Uses a non-greedy match and DOTALL so multi-line tags are handled too.
 _JINJA_RE = re.compile(r"(\{(?:%|-|#|\{).*?(?:%|-|#|\})\})", re.DOTALL)
  
 # Placeholder format — unlikely to appear in real CSS.
 _PLACEHOLDER = "__JINJA_{index}__"
-
+ 
+ 
 def extract_jinja(css: str) -> tuple[str, list[str]]:
     """
     Replace every Jinja tag in *css* with a numbered placeholder.
@@ -56,29 +53,61 @@ def restore_jinja(css: str, tokens: list[str]) -> str:
     return css
  
  
-def minify_with_jinja(css: str) -> str:
+def minify_with_jinja(css: str, minify_fn) -> str:
     """
     Full round-trip: extract Jinja → minify CSS → restore Jinja.
     If the string contains no Jinja tags, it is minified directly.
+ 
+    Two strategies are used depending on tag type:
+ 
+    - {% block tags %} and {# comments #}: split on these as boundaries and
+      minify each CSS segment independently, since they wrap whole blocks/rules.
+ 
+    - {{ value tags }}: substitute with a safe CSS ident before minifying the
+      whole string, so surrounding value tokens (e.g. 'px !important') are
+      preserved by the minifier.
     """
     if "{%" not in css and "{{" not in css and "{#" not in css:
         return flatten_with_lightning(css)
  
     stripped, tokens = extract_jinja(css)
  
-    # Each CSS segment between placeholders is minified individually
-    # so the minifier never sees a placeholder mid-declaration.
-    parts = re.split(r"(__JINJA_\d+__)", stripped)
+    # Partition placeholders into block-level (split boundaries) vs
+    # inline (ident substitution) based on the original tag type.
+    block_placeholders: set[str] = set()
+    ident_map: dict[str, str] = {}  # ident -> placeholder
+ 
+    for i, token in enumerate(tokens):
+        placeholder = _PLACEHOLDER.format(index=i)
+        if token.startswith("{%") or token.startswith("{#"):
+            block_placeholders.add(placeholder)
+        else:
+            # {{ }} inline value tag — swap to a CSS-safe ident
+            ident = f"JINJATPL{i}VALUE"
+            ident_map[ident] = placeholder
+            stripped = stripped.replace(placeholder, ident)
+ 
+    # Restore idents → placeholders after minification (done per-segment below)
+    def restore_idents(s: str) -> str:
+        for ident, placeholder in ident_map.items():
+            s = s.replace(ident, placeholder)
+        return s
+ 
+    # Split on block-level placeholders and minify each CSS segment.
+    # The regex keeps the delimiters in the result list via a capture group.
+    split_pattern = "(" + "|".join(re.escape(p) for p in block_placeholders) + ")"
+    parts = re.split(split_pattern, stripped) if block_placeholders else [stripped]
+ 
     minified_parts = []
     for part in parts:
-        if re.fullmatch(r"__JINJA_\d+__", part):
-            minified_parts.append(part)          # keep placeholder verbatim
+        if part in block_placeholders:
+            minified_parts.append(part)       # keep block placeholder verbatim
         elif part.strip():
-            minified_parts.append(flatten_with_lightning(part))  # minify real CSS
+            minified_parts.append(flatten_with_lightning(part))  # minify real CSS segment
         else:
-            minified_parts.append("")            # drop pure whitespace gaps
+            minified_parts.append("")         # drop pure-whitespace gaps
  
-    rejoined = "".join(minified_parts)
+    rejoined = restore_idents("".join(minified_parts))
     return restore_jinja(rejoined, tokens)
     
 class MyDumper(yaml.SafeDumper):
