@@ -1,5 +1,6 @@
 import yamlimport subprocessimport os
-# Set of keys known to contain CSS in card-mod themesCSS_KEYS = {
+# Set of keys known to contain CSS in card-mod themes
+CSS_KEYS = {
     "card-mod-card", "card-mod-row", "card-mod-glance", "card-mod-badge",
     "card-mod-heading-badge", "card-mod-assist-chip", "card-mod-element",
     "card-mod-root", "card-mod-view", "card-mod-more-info", "card-mod-sidebar",
