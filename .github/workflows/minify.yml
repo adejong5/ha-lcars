@@ -15,7 +15,7 @@ jobs:
       - name: Install Lightning CSS & Python deps
         run: |
           npm install -g lightningcss-cli
-          pip install PyYAML
+          pip install ruamel.yaml
       - name: Run Flatten Script
         run: python flatten_theme.py
 
