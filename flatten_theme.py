@@ -140,7 +140,7 @@ def process_node(node):
                 if isinstance(value, str):
                     sub = yaml.safe_load(value)
                     sub = process_subdicts(sub)
-                    node[key] = yaml.safe_dump(sub, sort_keys=False, default_flow_style=False)
+                    node[key] = yaml.safe_dump(sub, Dumper=MyDumper, sort_keys=False, default_flow_style=False)
             else:
                 process_node(value)
     elif isinstance(node, list):
@@ -155,7 +155,7 @@ def process_subdicts(sub):
         else:
             print(f"Processing CSS in: {key}")
             print(f"  input is: {subsub}")
-            sub[key] = " | \n" + minify_with_jinja(subsub)
+            sub[key] = minify_with_jinja(subsub)
             print(f"  output is: {sub[key]}")
     return sub
     
