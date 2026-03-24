@@ -135,7 +135,7 @@ def process_node(node):
                     yaml = ruamel.yaml.YAML()
                     sub = yaml.load(value)
                     sub = process_subdicts(sub)
-                    node[key] = yaml.dump(sub)
+                    node[key] = yaml.dumps(sub)
             else:
                 process_node(value)
     elif isinstance(node, list):
@@ -166,7 +166,7 @@ def main():
 
     process_node(data)
 
-    with open(output_file, 'w') as f:
+    with open(output_file, 'wb') as f:
         yaml.dump(data, f)
 if __name__ == "__main__":
     main()
