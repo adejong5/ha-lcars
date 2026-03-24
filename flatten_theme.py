@@ -18,11 +18,11 @@ def flatten_with_lightning(css_text):
     """Sends CSS to Lightning CSS for flattening and minification."""
     try:
         process = subprocess.Popen(
-            ['lightningcss', '--minify', '--nesting', '--targets \">= 0.25%\"'],
+            ['lightningcss', '--error-recovery', '--minify', '--nesting', '--targets \">= 0.25%\"'],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
         )
         stdout, stderr = process.communicate(input=css_text)
-        return stdout.strip() if process.returncode == 0 else css_text
+        return stdout.strip() if process.returncode == 0 else stderr
     except FileNotFoundError:
         return css_text
 def process_node(node):
