@@ -18,7 +18,7 @@ class MyDumper(yaml.SafeDumper):
         return super().represent_scalar(tag, value, style)
 def flatten_with_lightning(css_text):
     with tempfile.NamedTemporaryFile(suffix=".css", mode="w", delete=False) as tmp:
-        tmp.write(css)
+        tmp.write(css_text)
         tmp_path = tmp.name
     try:
         result = subprocess.run(
