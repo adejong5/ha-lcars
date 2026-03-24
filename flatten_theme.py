@@ -33,9 +33,10 @@ def process_node(node):
             if key in CSS_KEYS or (isinstance(key, str) and key.endswith("-yaml")):
                 if isinstance(value, str):
                     selectors = yaml.safe_load(value)
-                    for select, css in selectors:
-                        print(f"Processing CSS in: {key}, {select}")
-                        node[key][select] = flatten_with_lightning(css)
+                    if isinstance(selectors, dict):
+                        for select, css in selectors.items():
+                            print(f"Processing CSS in: {key}, {select}")
+                            node[key][select] = flatten_with_lightning(css)
             else:
                 process_node(value)
     elif isinstance(node, list):
