@@ -1,4 +1,4 @@
-import yaml
+import ruamel.yaml
 import re
 import subprocess
 import os
@@ -21,14 +21,6 @@ _JINJA_RE = re.compile(r"(\{(?:%|-|#|\{).*?(?:%|-|#|\})\})", re.DOTALL)
 # Placeholder format — unlikely to appear in real CSS.
 _PLACEHOLDER = "__JINJA_{index}__"
 
-# Yaml formatter
-def str_presenter(dumper, data):
-    """configures yaml for dumping multiline strings
-    Ref: https://stackoverflow.com/questions/8640959/how-can-i-control-what-scalar-form-pyyaml-uses-for-my-data"""
-    if len(data.splitlines()) > 1:  # check for multiline string
-        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
-    return dumper.represent_scalar('tag:yaml.org,2002:str', data)
- 
 def extract_jinja(css: str) -> tuple[str, list[str]]:
     """
     Replace every Jinja tag in *css* with a numbered placeholder.
@@ -117,12 +109,6 @@ def minify_with_jinja(css: str) -> str:
  
     rejoined = restore_idents("".join(minified_parts))
     return restore_jinja(rejoined, tokens)
-    
-class MyDumper(yaml.SafeDumper):
-    def represent_scalar(self, tag, value, style=None):
-        # Use "|" style for multi-line strings to keep YAML readable
-        style = "|"
-        return super().represent_scalar(tag, value, style)
         
 def flatten_with_lightning(css_text):
     with tempfile.NamedTemporaryFile(suffix=".css", mode="w", delete=False) as tmp:
@@ -148,7 +134,7 @@ def process_node(node):
                 if isinstance(value, str):
                     sub = yaml.safe_load(value)
                     sub = process_subdicts(sub)
-                    node[key] = yaml.dump(sub, width=float("inf"))
+                    node[key] = yaml.dump(sub)
             else:
                 process_node(value)
     elif isinstance(node, list):
@@ -170,12 +156,12 @@ def process_subdicts(sub):
 def main():
     input_file = 'lcars.yaml' # Replace with your theme file name
     output_file = 'themes/lcars_min.yaml'
+
     
-    yaml.add_representer(str, str_presenter)
-    yaml.representer.SafeRepresenter.add_representer(str, str_presenter)
+    yaml = ruamel.yaml.YAML()
     
     with open(input_file, 'r') as f:
-        data = yaml.safe_load(f)
+        data = yaml.load(f)
 
     process_node(data)
 
