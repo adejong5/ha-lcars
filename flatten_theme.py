@@ -113,7 +113,7 @@ def minify_with_jinja(css: str) -> str:
 class MyDumper(yaml.SafeDumper):
     def represent_scalar(self, tag, value, style=None):
         # Use "|" style for multi-line strings to keep YAML readable
-        if "\n" in value: style = "|"
+        style = "|"
         return super().represent_scalar(tag, value, style)
         
 def flatten_with_lightning(css_text):
