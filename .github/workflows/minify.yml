@@ -23,4 +23,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: flatten and minify nested theme css"
-          file_pattern: "lcars_min.yaml"
+          file_pattern: "themes/lcars_min.yaml"
