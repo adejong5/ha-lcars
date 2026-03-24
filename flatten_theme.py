@@ -1,6 +1,8 @@
 import yaml
 import subprocess
 import os
+import tempfile
+
 # Set of keys known to contain CSS in card-mod themes
 CSS_KEYS = {
     "card-mod-card", "card-mod-row", "card-mod-glance", "card-mod-badge",
@@ -15,17 +17,19 @@ class MyDumper(yaml.SafeDumper):
         if "\n" in value: style = "|"
         return super().represent_scalar(tag, value, style)
 def flatten_with_lightning(css_text):
-    args = ["lightningcss", "--minify", "--targets", ">= 0.25%", "/dev/stdin"]
-
-    process = subprocess.Popen(
-        args,
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True
-    )
-    stdout, stderr = process.communicate(input=css_text)
-    return stdout.strip() if process.returncode == 0 else stderr
+    with tempfile.NamedTemporaryFile(suffix=".css", mode="w", delete=False) as tmp:
+        tmp.write(css)
+        tmp_path = tmp.name
+    try:
+        result = subprocess.run(
+            ["lightningcss", "--minify", "--targets", "Safari >=14", tmp_path],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        return result.stdout.strip() if process.returncode == 0 else result.stderr
+    finally:
+        Path(tmp_path).unlink(missing_ok=True)
 
 def process_node(node):
     """Recursively search for specific keys in the YAML structure."""
