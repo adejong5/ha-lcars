@@ -32,17 +32,24 @@ def process_node(node):
             # Match specific card-mod keys OR any key ending in -yaml
             if key in CSS_KEYS or (isinstance(key, str) and key.endswith("-yaml")):
                 if isinstance(value, str):
-                    selectors = yaml.safe_load(value)
-                    if isinstance(selectors, dict):
-                        for select, css in selectors.items():
-                            print(f"Processing CSS in: {key}, {select}")
-                            selectors[select] = flatten_with_lightning(css)
-                    node[key] = yaml.safe_dump(selectors, sort_keys=False, default_flow_style=False)
+                    sub = yaml.safe_load(value)
+                    sub = process_subdicts(sub)
+                    node[key] = yaml.safe_dump(sub, sort_keys=False, default_flow_style=False)
             else:
                 process_node(value)
     elif isinstance(node, list):
         for item in node:
             process_node(item)
+def process_subdicts(sub):
+    for key, subsub in sub.items():
+        if isinstance(subsub,dict):
+            print(f"Processing dict: {key}")
+            sub[key] = process_subdicts(subsub)
+        else:
+            print(f"Processing CSS in: {key}")
+            sub[key] = flatten_with_lightning(subsub)
+    return sub
+    
 def main():
     input_file = 'lcars.yaml' # Replace with your theme file name
     output_file = 'themes/lcars_min.yaml'
