@@ -125,34 +125,53 @@ def flatten_with_lightning(css_text):
     finally:
         Path(tmp_path).unlink(missing_ok=True)
 
+def make_literal(s: str) -> ruamel.yaml.scalarstring.LiteralScalarString:
+    """Wrap a string as a ruamel literal block scalar (the | style)."""
+    return ruamel.yaml.scalarstring.LiteralScalarString(s)
+
+
+def process_css_subdict(sub: dict) -> dict:
+    """
+    Recursively walk the sub-dict parsed from a CSS_KEY's string value.
+    Every leaf string is treated as CSS and minified.
+    Every value is re-tagged as a literal block scalar after processing.
+    """
+    for key in sub:
+        value = sub[key]
+        if isinstance(value, dict):
+            process_css_subdict(value)
+        elif isinstance(value, str):
+            print(f"  Minifying CSS under key: {key}")
+            sub[key] = make_literal(minify_with_jinja(value))
+    return sub
+
+
 def process_node(node):
-    """Recursively search for specific keys in the YAML structure."""
+    """
+    Recursively walk the outer YAML structure looking for CSS_KEY matches.
+    Only CSS_KEY-matched (or -yaml-suffixed) string values are touched;
+    everything else is left completely unchanged.
+    """
     if isinstance(node, dict):
         for key, value in node.items():
-            # Match specific card-mod keys OR any key ending in -yaml
-            if key in CSS_KEYS or (isinstance(key, str) and key.endswith("-yaml")):
-                if isinstance(value, str):
-                    yaml = ruamel.yaml.YAML(typ=['rt', 'string'])
-                    sub = yaml.load(value)
-                    sub = process_subdicts(sub)
-                    node[key] = yaml.dump_to_string(sub)
-            else:
+            is_css_key = key in CSS_KEYS or (isinstance(key, str) and key.endswith("-yaml"))
+            if is_css_key and isinstance(value, str):
+                # Parse the CSS key's string value as its own YAML document
+                inner_yaml = ruamel.yaml.YAML()
+                inner_yaml.preserve_quotes = True
+                sub = inner_yaml.load(value)
+                if isinstance(sub, dict):
+                    process_css_subdict(sub)
+                    # Dump the sub-dict back to a YAML string using literal scalars
+                    stream = ruamel.yaml.compat.StringIO()
+                    inner_yaml.dump(sub, stream)
+                    node[key] = make_literal(stream.getvalue())
+            elif not is_css_key:
+                # Not a CSS key — recurse to find CSS keys deeper in the tree
                 process_node(value)
     elif isinstance(node, list):
         for item in node:
             process_node(item)
-            
-def process_subdicts(sub):
-    for key, subsub in sub.items():
-        if isinstance(subsub,dict):
-            print(f"Processing dict: {key}")
-            sub[key] = process_subdicts(subsub)
-        else:
-            print(f"Processing CSS in: {key}")
-            print(f"  input is: {subsub}")
-            sub[key] = minify_with_jinja(subsub)
-            print(f"  output is: {sub[key]}")
-    return sub
     
 def main():
     input_file = 'lcars.yaml' # Replace with your theme file name
