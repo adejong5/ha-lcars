@@ -18,7 +18,7 @@ def flatten_with_lightning(css_text):
     """Sends CSS to Lightning CSS for flattening and minification."""
     try:
         process = subprocess.Popen(
-            ['lightningcss', '--minify', '--nesting'],
+            ['lightningcss', '--minify', '--nesting', '--targets \">= 0.25%\"'],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
         )
         stdout, stderr = process.communicate(input=css_text)
@@ -32,8 +32,10 @@ def process_node(node):
             # Match specific card-mod keys OR any key ending in -yaml
             if key in CSS_KEYS or (isinstance(key, str) and key.endswith("-yaml")):
                 if isinstance(value, str):
-                    print(f"Processing CSS in key: {key}")
-                    node[key] = flatten_with_lightning(value)
+                    selectors = yaml.safe_load(value)
+                    for select, css in selectors:
+                        print(f"Processing CSS in: {key}, {select}")
+                        node[key][select] = flatten_with_lightning(css)
             else:
                 process_node(value)
     elif isinstance(node, list):
