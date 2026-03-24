@@ -132,10 +132,10 @@ def process_node(node):
             # Match specific card-mod keys OR any key ending in -yaml
             if key in CSS_KEYS or (isinstance(key, str) and key.endswith("-yaml")):
                 if isinstance(value, str):
-                    yaml = ruamel.yaml.YAML()
+                    yaml = ruamel.yaml.YAML(typ=['rt', 'string'])
                     sub = yaml.load(value)
                     sub = process_subdicts(sub)
-                    node[key] = yaml.dumps(sub)
+                    node[key] = yaml.dump_to_string(sub)
             else:
                 process_node(value)
     elif isinstance(node, list):
