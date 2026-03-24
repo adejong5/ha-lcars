@@ -15,15 +15,18 @@ class MyDumper(yaml.SafeDumper):
         if "\n" in value: style = "|"
         return super().represent_scalar(tag, value, style)
 def flatten_with_lightning(css_text):
-    """Sends CSS to Lightning CSS for flattening and minification."""
-    try:
-        process = subprocess.Popen(['lightningcss', '--minify', '--nesting', '--targets', 'Safari >= 14', '-'],
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
-        )
-        stdout, stderr = process.communicate(input=css_text)
-        return stdout.strip() if process.returncode == 0 else stderr
-    except FileNotFoundError:
-        return css_text
+    args = ["lightningcss", "--minify", "--targets", ">= 0.25%", "-"]
+
+    process = subprocess.Popen(
+        args,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
+    )
+    stdout, stderr = process.communicate(input=css_text)
+    return stdout.strip() if process.returncode == 0 else stderr
+
 def process_node(node):
     """Recursively search for specific keys in the YAML structure."""
     if isinstance(node, dict):
