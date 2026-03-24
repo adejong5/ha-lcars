@@ -12,11 +12,80 @@ CSS_KEYS = {
     "card-mod-config", "card-mod-panel-custom", "card-mod-top-app-bar-fixed",
     "card-mod-dialog"
 }
+# ---------------------------------------------------------------------------
+# Jinja template preservation
+# ---------------------------------------------------------------------------
+ 
+# Matches all three Jinja tag styles:  {% ... %}  {{ ... }}  {# ... #}
+# Uses a non-greedy match and DOTALL so multi-line tags are handled too.
+_JINJA_RE = re.compile(r"(\{(?:%|-|#|\{).*?(?:%|-|#|\})\})", re.DOTALL)
+ 
+# Placeholder format — unlikely to appear in real CSS.
+_PLACEHOLDER = "__JINJA_{index}__"
+
+def extract_jinja(css: str) -> tuple[str, list[str]]:
+    """
+    Replace every Jinja tag in *css* with a numbered placeholder.
+ 
+    Returns:
+        stripped   – CSS string safe to pass to a minifier
+        tokens     – ordered list of the original Jinja tag strings
+    """
+    tokens: list[str] = []
+ 
+    def replacer(match: re.Match) -> str:
+        tokens.append(match.group(0))
+        return _PLACEHOLDER.format(index=len(tokens) - 1)
+ 
+    stripped = _JINJA_RE.sub(replacer, css)
+    return stripped, tokens
+ 
+ 
+def restore_jinja(css: str, tokens: list[str]) -> str:
+    """
+    Substitute placeholders back with their original Jinja tags.
+    Strips leading whitespace the minifier may have added before a placeholder,
+    but leaves trailing characters (e.g. 'px') untouched.
+    """
+    for index, token in enumerate(tokens):
+        placeholder = _PLACEHOLDER.format(index=index)
+        # \s* on the left only — don't consume characters after the placeholder
+        # (e.g. 'px' in '--lcars-border: __JINJA_0__px')
+        css = re.sub(rf"\s*{re.escape(placeholder)}", token, css)
+    return css
+ 
+ 
+def minify_with_jinja(css: str) -> str:
+    """
+    Full round-trip: extract Jinja → minify CSS → restore Jinja.
+    If the string contains no Jinja tags, it is minified directly.
+    """
+    if "{%" not in css and "{{" not in css and "{#" not in css:
+        return minify_fn(css)
+ 
+    stripped, tokens = extract_jinja(css)
+ 
+    # Each CSS segment between placeholders is minified individually
+    # so the minifier never sees a placeholder mid-declaration.
+    parts = re.split(r"(__JINJA_\d+__)", stripped)
+    minified_parts = []
+    for part in parts:
+        if re.fullmatch(r"__JINJA_\d+__", part):
+            minified_parts.append(part)          # keep placeholder verbatim
+        elif part.strip():
+            minified_parts.append(flatten_with_lightning(part))  # minify real CSS
+        else:
+            minified_parts.append("")            # drop pure whitespace gaps
+ 
+    rejoined = "".join(minified_parts)
+    return restore_jinja(rejoined, tokens)
+    
 class MyDumper(yaml.SafeDumper):
     def represent_scalar(self, tag, value, style=None):
         # Use "|" style for multi-line strings to keep YAML readable
         if "\n" in value: style = "|"
         return super().represent_scalar(tag, value, style)
+        
 def flatten_with_lightning(css_text):
     with tempfile.NamedTemporaryFile(suffix=".css", mode="w", delete=False) as tmp:
         tmp.write(css_text)
@@ -47,6 +116,7 @@ def process_node(node):
     elif isinstance(node, list):
         for item in node:
             process_node(item)
+            
 def process_subdicts(sub):
     for key, subsub in sub.items():
         if isinstance(subsub,dict):
@@ -55,7 +125,7 @@ def process_subdicts(sub):
         else:
             print(f"Processing CSS in: {key}")
             print(f"  input is: {subsub}")
-            sub[key] = flatten_with_lightning(subsub)
+            sub[key] = minify_with_jinja(subsub)
             print(f"  output is: {sub[key]}")
     return sub
     
