@@ -140,7 +140,7 @@ def process_node(node):
                 if isinstance(value, str):
                     sub = yaml.safe_load(value)
                     sub = process_subdicts(sub)
-                    node[key] = yaml.safe_dump(sub, Dumper=MyDumper, sort_keys=False, default_flow_style=False)
+                    node[key] = yaml.dump(sub, Dumper=MyDumper, sort_keys=False, default_flow_style=False)
             else:
                 process_node(value)
     elif isinstance(node, list):
