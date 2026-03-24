@@ -1,0 +1,28 @@
+name: Minify Theme
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  minify-css:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Lightning CSS & Python deps
+        run: |
+          npm install -g lightningcss-cli
+          pip install PyYAML
+      - name: Run Flatten Script
+        run: python flatten_theme.py
+
+      - name: Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: flatten and minify nested theme css"
+          file_pattern: "lcars_min.yaml"
