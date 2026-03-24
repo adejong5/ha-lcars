@@ -62,7 +62,7 @@ def minify_with_jinja(css: str) -> str:
     If the string contains no Jinja tags, it is minified directly.
     """
     if "{%" not in css and "{{" not in css and "{#" not in css:
-        return minify_fn(css)
+        return flatten_with_lightning(css)
  
     stripped, tokens = extract_jinja(css)
  
