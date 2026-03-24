@@ -5,6 +5,7 @@ import os
 import tempfile
 from pathlib import Path
 import math
+from ruamel.yaml.constructor import RoundTripConstructor
 
 # Set of keys known to contain CSS in card-mod themes
 CSS_KEYS = {
@@ -178,11 +179,14 @@ def main():
     output_file = 'themes/lcars_min.yaml'
 
     
-    yaml = ruamel.yaml.YAML()
+    RoundTripConstructor.flatten_mapping = lambda self, node: None
     
+    yaml = ruamel.yaml.YAML()
+    yaml.preserve_quotes = True
+    yaml.default_flow_style = False
     with open(input_file, 'r') as f:
         data = yaml.load(f)
-
+        
     process_node(data)
 
     with open(output_file, 'wb') as f:
