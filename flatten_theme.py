@@ -15,7 +15,7 @@ class MyDumper(yaml.SafeDumper):
         if "\n" in value: style = "|"
         return super().represent_scalar(tag, value, style)
 def flatten_with_lightning(css_text):
-    args = ["lightningcss", "--minify", "--targets", ">= 0.25%", "-"]
+    args = ["lightningcss", "--minify", "--targets", ">= 0.25%", "/dev/stdin"]
 
     process = subprocess.Popen(
         args,
