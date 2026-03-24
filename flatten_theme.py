@@ -28,7 +28,7 @@ def flatten_with_lightning(css_text):
             text=True,
             check=True,
         )
-        return result.stdout.strip() if process.returncode == 0 else result.stderr
+        return result.stdout.strip() if result.returncode == 0 else result.stderr
     finally:
         Path(tmp_path).unlink(missing_ok=True)
 
