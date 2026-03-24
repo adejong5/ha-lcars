@@ -23,7 +23,7 @@ def flatten_with_lightning(css_text):
         tmp_path = tmp.name
     try:
         result = subprocess.run(
-            ["lightningcss", "--minify", "--targets", "Safari >=14", tmp_path],
+            ["lightningcss", "--error-recovery", "--minify", "--targets", "Safari >=14", tmp_path],
             capture_output=True,
             text=True,
             check=True,
