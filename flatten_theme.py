@@ -17,6 +17,8 @@ CSS_KEYS = {
 # Matches all three Jinja tag styles:  {% ... %}  {{ ... }}  {# ... #}
 # Uses a non-greedy match and DOTALL so multi-line tags are handled too.
 _JINJA_RE = re.compile(r"(\{(?:%|-|#|\{).*?(?:%|-|#|\})\})", re.DOTALL)
+# Matches a CSS string value containing a {{ }} expression, e.g. content:"...{{ }}..."
+_STRING_WITH_EXPR_RE = re.compile(r'("(?:[^"\\]|\\.)*\{\{.*?\}\}(?:[^"\\]|\\.)*")', re.DOTALL)
 
 # Matches entire {% if %} ... {% endif %} blocks, including all content inside.
 _BLOCK_RE = re.compile(r"(\{%-?\s*if\b.*?-?%\}.*?\{%-?\s*endif\s*-?%\})", re.DOTALL)
@@ -56,25 +58,11 @@ def restore_jinja(css: str, tokens: list[str]) -> str:
         css = re.sub(rf"\s*{re.escape(placeholder)}", token, css)
     return css
 
-
 def minify_with_jinja(css: str) -> str:
-    """
-    Full round-trip: extract Jinja → minify CSS → restore Jinja.
-    If the string contains no Jinja tags, it is minified directly.
-
-    Two strategies are used depending on tag type:
-
-    - {% if %} ... {% endif %} blocks: replaced wholesale with a single
-      placeholder before minification, then restored verbatim. The CSS
-      inside these blocks is NOT minified.
-
-    - {{ value tags }}: substitute with a safe CSS ident before minifying
-      so surrounding value tokens (e.g. 'px !important') are preserved.
-    """
     if "{%" not in css and "{{" not in css and "{#" not in css:
         return flatten_with_lightning(css)
 
-    # Step 1: lift entire {% if %}...{% endif %} blocks out wholesale.
+    # Step 1: lift {% if %}...{% endif %} blocks out wholesale.
     block_tokens: list[str] = []
 
     def lift_block(match: re.Match) -> str:
@@ -83,7 +71,17 @@ def minify_with_jinja(css: str) -> str:
 
     stripped = _BLOCK_RE.sub(lift_block, css)
 
-    # Step 2: replace remaining {{ }} inline value tags with CSS-safe idents.
+    # Step 2: lift entire CSS string values containing {{ }} out wholesale,
+    # so lightningcss never sees the Jinja expression inside a string literal.
+    string_tokens: list[str] = []
+
+    def lift_string(match: re.Match) -> str:
+        string_tokens.append(match.group(0))
+        return f"JINJASTR{len(string_tokens) - 1}VALUE"
+
+    stripped = _STRING_WITH_EXPR_RE.sub(lift_string, stripped)
+
+    # Step 3: replace remaining {{ }} inline value tags with CSS-safe idents.
     stripped, inline_tokens = extract_jinja(stripped)
     ident_map: dict[str, str] = {}
 
@@ -93,21 +91,24 @@ def minify_with_jinja(css: str) -> str:
         ident_map[ident] = placeholder
         stripped = stripped.replace(placeholder, ident)
 
-    # Step 3: minify the now-clean CSS.
+    # Step 4: minify the now-clean CSS.
     minified = flatten_with_lightning(stripped)
 
-    # Step 4: restore {{ }} idents back to placeholders, then to tokens.
+    # Step 5: restore {{ }} idents back to tokens.
     for ident, placeholder in ident_map.items():
         minified = minified.replace(ident, placeholder)
     minified = restore_jinja(minified, inline_tokens)
 
-    # Step 5: restore the {% if %}...{% endif %} blocks verbatim.
+    # Step 6: restore string values containing {{ }} verbatim.
+    for i, string_val in enumerate(string_tokens):
+        minified = minified.replace(f"JINJASTR{i}VALUE", string_val)
+
+    # Step 7: restore {% if %}...{% endif %} blocks verbatim.
     for i, block in enumerate(block_tokens):
         minified = minified.replace(_PLACEHOLDER.format(index=i), block)
 
     return minified
-
-
+    
 def flatten_with_lightning(css_text):
     with tempfile.NamedTemporaryFile(suffix=".css", mode="w", delete=False) as tmp:
         tmp.write(css_text)
