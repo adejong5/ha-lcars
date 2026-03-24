@@ -155,7 +155,7 @@ def process_subdicts(sub):
         else:
             print(f"Processing CSS in: {key}")
             print(f"  input is: {subsub}")
-            sub[key] = minify_with_jinja(subsub)
+            sub[key] = " | \n" + minify_with_jinja(subsub)
             print(f"  output is: {sub[key]}")
     return sub
     
