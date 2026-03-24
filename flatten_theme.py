@@ -133,7 +133,7 @@ def process_node(node):
             if key in CSS_KEYS or (isinstance(key, str) and key.endswith("-yaml")):
                 if isinstance(value, str):
                     yaml = ruamel.yaml.YAML()
-                    sub = yaml.safe_load(value)
+                    sub = yaml.load(value)
                     sub = process_subdicts(sub)
                     node[key] = yaml.dump(sub)
             else:
