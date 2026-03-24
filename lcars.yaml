@@ -1674,9 +1674,7 @@
 # references at the top of this file, or define your own.
 LCARS Default:
   card-mod-theme: LCARS Default
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # ======================= YOUR MODIFICATIONS BEGIN HERE |
   # Primary colors                                        V
   lcars-ui-primary: var(--lcars-almond-creme)
@@ -1702,9 +1700,7 @@ LCARS Default:
 
 LCARS Classic:
   card-mod-theme: LCARS Classic
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-khaki)
   lcars-ui-secondary: var(--lcars-khaki)
@@ -1730,9 +1726,7 @@ LCARS Classic:
 
 LCARS Nemesis Blue:
   card-mod-theme: LCARS Nemesis Blue
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-evening)
   lcars-ui-secondary: var(--lcars-wheat)
@@ -1758,9 +1752,7 @@ LCARS Nemesis Blue:
 
 LCARS Lower Decks I:
   card-mod-theme: LCARS Lower Decks I
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-gold)
   lcars-ui-secondary: var(--lcars-butter)
@@ -1786,9 +1778,7 @@ LCARS Lower Decks I:
 
 LCARS Lower Decks II:
   card-mod-theme: LCARS Lower Decks II
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   lcars-ui-primary: var(--lcars-gold)
   lcars-ui-secondary: var(--lcars-butter)
   lcars-ui-tertiary: var(--lcars-orange)
@@ -1813,9 +1803,7 @@ LCARS Lower Decks II:
 
 LCARS Romulus:
   card-mod-theme: LCARS Romulus
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-green)
   lcars-ui-secondary: var(--lcars-african-violet)
@@ -1841,9 +1829,7 @@ LCARS Romulus:
 
 LCARS Kronos:
   card-mod-theme: LCARS Kronos
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-mars)
   lcars-ui-secondary: var(--lcars-gold)
@@ -1869,9 +1855,7 @@ LCARS Kronos:
 
 LCARS Cardassia:
   card-mod-theme: LCARS Cardassia
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-aqua)
   lcars-ui-secondary: var(--lcars-lavender-rose)
@@ -1897,9 +1881,7 @@ LCARS Cardassia:
 
 LCARS Zeldaar:
   card-mod-theme: LCARS Zeldaar
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-violet-creme)
   lcars-ui-secondary: var(--lcars-honey)
@@ -1925,9 +1907,7 @@ LCARS Zeldaar:
 
 LCARS Modern:
   card-mod-theme: LCARS Modern
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-violet-creme)
   lcars-ui-secondary: var(--lcars-sky)
@@ -1953,9 +1933,7 @@ LCARS Modern:
 
 LCARS Picard I:
   card-mod-theme: LCARS Picard I
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-hellgrau)
   lcars-ui-secondary: var(--lcars-mittelgrau)
@@ -1981,9 +1959,7 @@ LCARS Picard I:
 
 LCARS Picard II:
   card-mod-theme: LCARS Picard II
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-turquoise)
   lcars-ui-secondary: var(--lcars-cerulean)
@@ -2009,9 +1985,7 @@ LCARS Picard II:
 
 LCARS Red Alert:
   card-mod-theme: LCARS Red Alert
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   lcars-ui-primary: var(--lcars-cardinal)
   lcars-ui-secondary: var(--lcars-silver)
   lcars-ui-tertiary: var(--lcars-scarlet)
@@ -2036,9 +2010,7 @@ LCARS Red Alert:
 
 LCARS TNG:
   card-mod-theme: LCARS TNG
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
 
   # UI Colors
   lcars-ui-primary: "#f5deb3" # Main Display Background (Wheat)
@@ -2067,9 +2039,7 @@ LCARS TNG:
 
 LCARS TNGbuttons:
   card-mod-theme: LCARS TNGbuttons
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
 
   # UI Colors
   lcars-ui-primary: "#F5cd9f" # Main Display Background
@@ -2098,9 +2068,7 @@ LCARS TNGbuttons:
 
 LCARS Transporter:
   card-mod-theme: LCARS Transporter
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   lcars-ui-primary: var(--lcars-navy-gray)
   lcars-ui-secondary: var(--lcars-slate-gray)
   lcars-ui-tertiary: var(--lcars-coral)
@@ -2125,9 +2093,7 @@ LCARS Transporter:
 
 LCARS Navigation:
   card-mod-theme: LCARS Navigation
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   lcars-ui-primary: var(--lcars-olive)
   lcars-ui-secondary: var(--lcars-sand)
   lcars-ui-tertiary: var(--lcars-lemon)
@@ -2152,9 +2118,7 @@ LCARS Navigation:
 
 LCARS 25C:
   card-mod-theme: LCARS 25C
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-primary-gray)
   lcars-ui-secondary: var(--lcars-medium-gray)
@@ -2195,10 +2159,8 @@ LCARS 25C:
 
 # Red Alert
 LCARS 25C (Red Alert):
-  card-mod-theme: LCARS 25C (Red Alert)
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  card-mod-theme: LCARS 25C (Red Aler
+  <<: [*lcars-variables, *base, *card-mod-css]
   lcars-ui-primary: var(--lcars-alert-color)
   lcars-ui-secondary: var(--lcars-alert-white)
   lcars-ui-tertiary: var(--lcars-alert-color)
@@ -2228,9 +2190,7 @@ LCARS 25C (Red Alert):
 # Yellow Alert
 LCARS 25C (Yellow Alert):
   card-mod-theme: LCARS 25C (Yellow Alert)
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   lcars-ui-primary: var(--lcars-alert-color)
   lcars-ui-secondary: var(--lcars-alert-white)
   lcars-ui-tertiary: var(--lcars-alert-color)
@@ -2260,9 +2220,7 @@ LCARS 25C (Yellow Alert):
 # Blue Alert
 LCARS 25C (Blue Alert):
   card-mod-theme: LCARS 25C (Blue Alert)
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   lcars-ui-primary: var(--lcars-alert-color)
   lcars-ui-secondary: var(--lcars-alert-white)
   lcars-ui-tertiary: var(--lcars-alert-color)
@@ -2291,9 +2249,7 @@ LCARS 25C (Blue Alert):
 
 LCARS Breen:
   card-mod-theme: LCARS Breen
-  <<: *lcars-variables
-  <<: *base
-  <<: *card-mod-css
+  <<: [*lcars-variables, *base, *card-mod-css]
   # Primary colors
   lcars-ui-primary: var(--lcars-green-primary)
   lcars-ui-secondary: var(--lcars-green-secondary)
