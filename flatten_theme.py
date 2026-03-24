@@ -4,6 +4,7 @@ import subprocess
 import os
 import tempfile
 from pathlib import Path
+import math
 
 # Set of keys known to contain CSS in card-mod themes
 CSS_KEYS = {
@@ -147,7 +148,7 @@ def process_node(node):
                 if isinstance(value, str):
                     sub = yaml.safe_load(value)
                     sub = process_subdicts(sub)
-                    node[key] = yaml.dump(sub, width=float(inf))
+                    node[key] = yaml.dump(sub, width=float("inf"))
             else:
                 process_node(value)
     elif isinstance(node, list):
