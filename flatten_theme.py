@@ -53,7 +53,7 @@ def restore_jinja(css: str, tokens: list[str]) -> str:
     return css
  
  
-def minify_with_jinja(css: str, minify_fn) -> str:
+def minify_with_jinja(css: str) -> str:
     """
     Full round-trip: extract Jinja → minify CSS → restore Jinja.
     If the string contains no Jinja tags, it is minified directly.
