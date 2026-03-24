@@ -351,9 +351,6 @@
         font-family: var(--font-family) !important;
         --md-sys-color-primary: var(--lcars-ui-quaternary) !important;
       }
-      #:host > ha-card > .name {
-      #  --primary-text-color: var(--lcars-text-dark);
-      #}
       
       /* =============================================== */
       /*        HEADER CLASSES AND CARD TYPE FIXES       */
@@ -463,10 +460,6 @@
           --primary-text-color: var(--lcars-text-gray);
           }
         }
-      }
-      > ha-markdown,
-      > ha-card > ha-markdown {
-        padding-block: 0px;
       }
       
       /* -----------------Border on left---------------- */
