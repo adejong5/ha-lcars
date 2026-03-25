@@ -70,6 +70,8 @@ def minify_with_jinja(css: str) -> str:
         return _PLACEHOLDER.format(index=len(block_tokens) - 1)
 
     stripped = _BLOCK_RE.sub(lift_block, css)
+    print("input is")
+    print({stripped})
 
     # Step 2: lift entire CSS string values containing {{ }} out wholesale,
     # so lightningcss never sees the Jinja expression inside a string literal.
@@ -92,8 +94,6 @@ def minify_with_jinja(css: str) -> str:
         stripped = stripped.replace(placeholder, ident)
 
     # Step 4: minify the now-clean CSS.
-    print("input is")
-    print({stripped})
     minified = flatten_with_lightning(stripped)
 
     # Step 5: restore {{ }} idents back to tokens.
