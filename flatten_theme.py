@@ -142,6 +142,7 @@ def process_css_subdict(sub: dict) -> dict:
             process_css_subdict(value)
         elif isinstance(value, str):
             print(f"  Minifying CSS under key: {key}")
+            print(value)
             sub[key] = make_literal(minify_with_jinja(value))
     return sub
 
