@@ -92,6 +92,8 @@ def minify_with_jinja(css: str) -> str:
         stripped = stripped.replace(placeholder, ident)
 
     # Step 4: minify the now-clean CSS.
+    print("input is")
+    print({stripped})
     minified = flatten_with_lightning(stripped)
 
     # Step 5: restore {{ }} idents back to tokens.
@@ -142,7 +144,6 @@ def process_css_subdict(sub: dict) -> dict:
             process_css_subdict(value)
         elif isinstance(value, str):
             print(f"  Minifying CSS under key: {key}")
-            print(value)
             sub[key] = make_literal(minify_with_jinja(value))
     return sub
 
