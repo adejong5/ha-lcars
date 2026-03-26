@@ -24,7 +24,7 @@ _STRING_WITH_EXPR_RE = re.compile(r'("(?:[^"\\]|\\.)*\{\{.*?\}\}(?:[^"\\]|\\.)*"
 _BLOCK_RE = re.compile(r"(\{%-?\s*if\b.*?-?%\}.*?\{%-?\s*endif\s*-?%\})", re.DOTALL)
 
 # For {% %} statements — valid anywhere in CSS including top level
-_STATEMENT_PLACEHOLDER = "JINJASTM\{ --index: {index}; \}"
+_STATEMENT_PLACEHOLDER = "jinja-stmt-{index}{{--s:0}}"
 
 # For {{ }} expressions — valid as a CSS value token
 _EXPRESSION_PLACEHOLDER = "__JINJA_EXPR_{index}__"
@@ -67,8 +67,12 @@ def minify_with_jinja(css: str) -> str:
 
     # Step 5: restore {% if %}...{% endif %} blocks verbatim.
     for i, token in enumerate(block_tokens):
-        minified = minified.replace(_STATEMENT_PLACEHOLDER.format(index=i), token)
-
+        # Match the minified form of the placeholder rule
+        minified = re.sub(
+            rf"\s*jinja-stmt-{i}\{{[^}}]*\}}",
+            token,
+            minified
+        )
     return minified
     
 def flatten_with_lightning(css_text):
