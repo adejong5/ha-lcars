@@ -67,12 +67,12 @@ def minify_with_jinja(css: str) -> str:
 
     # Step 5: restore {% if %}...{% endif %} blocks verbatim.
     for i, token in enumerate(block_tokens):
-        # Match the minified form of the placeholder rule
-        minified = re.sub(
-            rf"\s*jinja-stmt-{i}\{{[^}}]*\}}",
-            token,
-            minified
-        )
+    minified = re.sub(
+        rf"\s*jinja-stmt-{i}\s*\{{.*?\}}",
+        token,
+        minified,
+        flags=re.DOTALL
+    )
     return minified
     
 def flatten_with_lightning(css_text):
