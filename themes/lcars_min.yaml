@@ -989,6 +989,10 @@
         padding-right: 23px;
       }
 
+      jinja-stmt-0, jinja-stmt-1 {
+        --s: 0;
+      }
+
   # ===================================================== #
   #                 CONFIG MODIFICATIONS                  #
   # ===================================================== #
@@ -1321,6 +1325,10 @@
       ha-md-list:not(.ha-scrollbar) {
         background-color: var(--lcars-background-color);
         padding: 54px 0 0 !important;
+      }
+
+      jinja-stmt-0 {
+        --s: 0;
       }
 
 # ======================================================= #
