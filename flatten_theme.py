@@ -24,7 +24,7 @@ _STRING_WITH_EXPR_RE = re.compile(r'("(?:[^"\\]|\\.)*\{\{.*?\}\}(?:[^"\\]|\\.)*"
 _BLOCK_RE = re.compile(r"(\{%-?\s*if\b.*?-?%\}.*?\{%-?\s*endif\s*-?%\})", re.DOTALL)
 
 # For {% %} statements — valid anywhere in CSS including top level
-_STATEMENT_PLACEHOLDER = "/*!__JINJA_STMT_{index}__*/"
+_STATEMENT_PLACEHOLDER = "JINJASTM\{ --index: {index}; \}"
 
 # For {{ }} expressions — valid as a CSS value token
 _EXPRESSION_PLACEHOLDER = "__JINJA_EXPR_{index}__"
